@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Studio Élégance – Salon de coiffure haut de gamme à Paris. Coupe, coloration, brushing, soins capillaires. Réservez en ligne dès maintenant.">
+<meta name="keywords" content="salon de coiffure Paris, coiffeur haut de gamme, coupe femme Paris, coloration Paris, Studio Élégance">
+<meta property="og:title" content="Studio Élégance – Coiffeur Haut de Gamme à Paris">
+<meta property="og:description" content="Découvrez l'art de la coiffure d'exception au Studio Élégance. Réservez votre rendez-vous en ligne.">
+<title>Studio Élégance – Coiffeur Haut de Gamme à Paris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0d0d;
+    --white: #fafaf8;
+    --beige: #e8e0d4;
+    --beige-light: #f4f0ea;
+    --beige-mid: #d4c8b8;
+    --gold: #b8976a;
+    --gold-light: #d4b896;
+    --gold-dark: #9a7a50;
+    --text-dark: #1a1a1a;
+    --text-mid: #5a5248;
+    --text-light: #8a8278;
+    --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: 0.2s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--beige-light); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.2; letter-spacing: 0.01em; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,151,106,0.15);
+    transition: padding var(--transition);
+  }
+
+  nav.scrolled { padding: 0.875rem 3rem; }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-logo:hover { color: var(--gold-light); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.7);
+    text-decoration: none;
+    position: relative;
+    transition: color var(--transition-fast);
+    padding-bottom: 2px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width var(--transition);
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black) !important;
+    background: var(--gold);
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+    border: 1px solid var(--gold);
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--gold-dark); color: var(--white) !important; transform: translateY(-1px); }
+
+  /* ─── HAMBURGER ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+    background: none; border: none;
+    z-index: 1100;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 1.5px;
+    background: var(--white);
+    transition: all var(--transition);
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--black);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 2.5rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--transition);
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; display: flex; }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color var(--transition-fast);
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .m-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 1rem 3rem;
+  }
+
+  /* ─── PAGES ─── */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── BUTTONS ─── */
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 1rem 2.5rem;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--gold-dark);
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+  }
+  .btn-primary:hover::before { transform: none; }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--white); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,151,106,0.08); }
+
+  .btn-dark {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--black);
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+  .btn-dark:hover { background: transparent; color: var(--black); transform: translateY(-2px); }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-label {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .section-label::before {
+    content: '';
+    position: absolute; left: 0; top: 50%;
+    width: 1.75rem; height: 1px;
+    background: var(--gold);
+    transform: translateY(-50%);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+  }
+  .section-title.light { color: var(--white); }
+
+  /* ─────────────────────────────────────
+     PAGE 1 – ACCUEIL
+  ───────────────────────────────────── */
+
+  /* HERO */
+  .hero {
+    position: relative; height: 100vh; min-height: 600px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: -5%;
+    background: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1800&q=80') center/cover no-repeat;
+    transform: scale(1.1);
+    animation: parallaxIdle 20s ease-in-out infinite alternate;
+  }
+  @keyframes parallaxIdle {
+    from { transform: scale(1.1) translateY(0); }
+    to { transform: scale(1.1) translateY(-2%); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0.45) 60%, rgba(13,13,13,0.65) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+    animation: heroFadeIn 1.2s ease both;
+  }
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    animation: heroFadeIn 1.2s 0.2s ease both;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: heroFadeIn 1.2s 0.35s ease both;
+    letter-spacing: 0.02em;
+  }
+  .hero-title em { color: var(--gold-light); font-style: italic; }
+  .hero-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: rgba(250,250,248,0.75);
+    margin-bottom: 2.5rem;
+    animation: heroFadeIn 1.2s 0.5s ease both;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: heroFadeIn 1.2s 0.65s ease both;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(250,250,248,0.5);
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    animation: heroFadeIn 1.2s 0.9s ease both;
+    cursor: pointer;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 3rem;
+    background: linear-gradient(to bottom, rgba(250,250,248,0), var(--gold));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* INTRO STRIP */
+  .intro-strip {
+    background: var(--beige-light);
+    padding: 3rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 4rem; flex-wrap: wrap;
+    border-bottom: 1px solid var(--beige-mid);
+  }
+  .intro-stat {
+    text-align: center;
+  }
+  .intro-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold-dark);
+    line-height: 1;
+    display: block;
+  }
+  .intro-stat-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+  }
+  .intro-divider {
+    width: 1px; height: 3rem;
+    background: var(--beige-mid);
+  }
+
+  /* ABOUT SECTION */
+  .about-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 85vh;
+  }
+  .about-image {
+    position: relative; overflow: hidden;
+  }
+  .about-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .about-image:hover img { transform: scale(1.04); }
+  .about-image-badge {
+    position: absolute; bottom: 2.5rem; right: -1px;
+    background: var(--gold);
+    padding: 1.5rem 2rem;
+    color: var(--black);
+    text-align: center;
+  }
+  .about-image-badge strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .about-image-badge span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .about-content {
+    background: var(--beige-light);
+    padding: 6rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .about-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .about-content .about-body {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    font-style: normal;
+    color: var(--text-mid);
+    margin-bottom: 2.5rem;
+  }
+
+  /* CAROUSEL "CE QUI NOUS DIFFÉRENCIE" */
+  .differentiators {
+    background: var(--black);
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+  .diff-header { text-align: center; padding: 0 2rem; margin-bottom: 3.5rem; }
+  .diff-header .section-label { color: var(--gold); }
+  .diff-header .section-label::before { background: var(--gold); }
+
+  .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 0 2rem;
+  }
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 calc(50% - 200px);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .diff-card {
+    min-width: 380px; max-width: 380px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,151,106,0.15);
+    padding: 2.5rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    flex-shrink: 0;
+    opacity: 0.5; transform: scale(0.92);
+    text-align: center;
+  }
+  .diff-card.active {
+    opacity: 1; transform: scale(1);
+    border-color: rgba(184,151,106,0.4);
+    background: rgba(184,151,106,0.07);
+  }
+  .diff-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .diff-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .diff-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(250,250,248,0.55);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .diff-card .card-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    cursor: pointer;
+    background: none; border: none;
+    transition: color var(--transition-fast);
+  }
+  .diff-card .card-cta:hover { color: var(--gold-light); text-decoration: underline; }
+
+  .carousel-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; margin-top: 2.5rem;
+  }
+  .carousel-btn {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(184,151,106,0.3);
+    background: none; cursor: pointer;
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+  }
+  .carousel-btn:hover { background: var(--gold); color: var(--black); }
+  .carousel-dots { display: flex; gap: 6px; }
+  .carousel-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(184,151,106,0.3);
+    cursor: pointer; transition: all var(--transition-fast);
+    border: none;
+  }
+  .carousel-dot.active { background: var(--gold); width: 20px; border-radius: 3px; }
+
+  /* FEATURED SERVICES PREVIEW */
+  .services-preview {
+    padding: 7rem 3rem;
+    max-width: 1300px; margin: 0 auto;
+  }
+  .services-preview-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--beige-mid);
+    border: 1px solid var(--beige-mid);
+  }
+  .service-preview-card {
+    background: var(--white);
+    padding: 2.5rem;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+  .service-preview-card:hover {
+    background: var(--black);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+  .service-preview-card:hover h4,
+  .service-preview-card:hover .spc-price { color: var(--white); }
+  .service-preview-card:hover p { color: rgba(250,250,248,0.6); }
+  .service-preview-card:hover .spc-icon { color: var(--gold); }
+  .spc-icon {
+    font-size: 1.5rem;
+    color: var(--gold-dark);
+    margin-bottom: 1.25rem;
+    display: block;
+    transition: color var(--transition-fast);
+  }
+  .service-preview-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    transition: color var(--transition-fast);
+  }
+  .service-preview-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    transition: color var(--transition-fast);
+  }
+  .spc-price {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dark);
+    font-weight: 400;
+    transition: color var(--transition-fast);
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--beige-light);
+    padding: 7rem 3rem;
+    text-align: center;
+  }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; max-width: 1100px; margin: 3rem auto 0;
+  }
+  .testi-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-left: 2px solid var(--gold);
+    text-align: left;
+  }
+  .testi-stars { color: var(--gold); margin-bottom: 1rem; font-size: 0.85rem; }
+  .testi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .testi-author {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    position: relative; overflow: hidden;
+    padding: 6rem 3rem;
+    text-align: center;
+    background: var(--black);
+  }
+  .cta-banner-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1400&q=80') center/cover;
+    opacity: 0.2;
+  }
+  .cta-banner-content { position: relative; z-index: 2; }
+  .cta-banner h2 { color: var(--white); margin-bottom: 1rem; font-size: clamp(2rem, 4vw, 3.5rem); }
+  .cta-banner p {
+    font-family: 'Jost', sans-serif;
+    color: rgba(250,250,248,0.6);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+  }
+
+  /* ─────────────────────────────────────
+     PAGE 2 – SERVICES
+  ───────────────────────────────────── */
+  .page-hero {
+    height: 45vh; min-height: 320px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .page-hero-overlay {
+    position: absolute; inset: 0;
+    background: rgba(13,13,13,0.65);
+  }
+  .page-hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 0 2rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--white);
+    font-weight: 300;
+  }
+  .page-hero .breadcrumb {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 0.75rem;
+  }
+
+  .services-full { padding: 6rem 3rem; max-width: 1300px; margin: 0 auto; }
+  .services-category { margin-bottom: 5rem; }
+  .services-category-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--beige-mid);
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .services-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--beige-light);
+    padding: 2.5rem;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition);
+    border: 1px solid transparent;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--black);
+    transform: translateY(100%);
+    transition: transform var(--transition);
+  }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .service-card:hover::before { transform: translateY(0); }
+  .service-card-content { position: relative; z-index: 2; }
+  .service-card:hover .service-card-content * { color: var(--white) !important; }
+  .service-card:hover .service-card-content .sc-tag { color: var(--gold) !important; }
+  .service-card-img {
+    width: 100%; height: 200px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    display: block;
+    transition: transform var(--transition);
+  }
+  .service-card:hover .service-card-img { transform: scale(1.03); }
+  .sc-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold-dark);
+    transition: color var(--transition-fast);
+    display: block; margin-bottom: 0.75rem;
+  }
+  .service-card h3 {
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--text-dark); margin-bottom: 0.5rem;
+    transition: color var(--transition-fast);
+  }
+  .service-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem; font-weight: 300;
+    color: var(--text-mid); line-height: 1.7;
+    margin-bottom: 1.25rem;
+    transition: color var(--transition-fast);
+  }
+  .service-card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .sc-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 300;
+    color: var(--gold-dark);
+    transition: color var(--transition-fast);
+  }
+  .sc-duration {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    transition: color var(--transition-fast);
+  }
+  .services-cta-area { text-align: center; padding: 3rem 0 5rem; }
+
+  /* ─────────────────────────────────────
+     PAGE 3 – GALERIE
+  ───────────────────────────────────── */
+  .gallery-section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
+  .gallery-filter {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-bottom: 2.5rem; justify-content: center;
+  }
+  .filter-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--beige-mid);
+    background: none; cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--text-mid);
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--black); color: var(--white);
+    border-color: var(--black);
+  }
+  .gallery-grid {
+    columns: 3;
+    column-gap: 1rem;
+  }
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%; display: block;
+    transition: transform 0.6s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: rgba(13,13,13,0);
+    display: flex; align-items: flex-end;
+    padding: 1.5rem;
+    transition: background var(--transition);
+  }
+  .gallery-item:hover .gallery-overlay { background: rgba(13,13,13,0.5); }
+  .gallery-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--white);
+    opacity: 0; transform: translateY(10px);
+    transition: all var(--transition);
+  }
+  .gallery-item:hover .gallery-label { opacity: 1; transform: none; }
+  .gallery-cta { text-align: center; padding: 3rem 0 5rem; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,0,0,0.95);
+    display: none; align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+  .lightbox-close {
+    position: absolute; top: 1.5rem; right: 2rem;
+    color: var(--white); font-size: 2rem;
+    cursor: pointer; background: none; border: none;
+    line-height: 1;
+  }
+  .lightbox-close:hover { color: var(--gold); }
+
+  /* ─────────────────────────────────────
+     PAGE 4 – RÉSERVATION
+  ───────────────────────────────────── */
+  .booking-section {
+    padding: 5rem 2rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .booking-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .booking-info h3 {
+    font-size: 1.75rem; margin-bottom: 1rem;
+  }
+  .booking-info p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.875rem; font-weight: 300;
+    color: var(--text-mid); line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .booking-details { display: flex; flex-direction: column; gap: 1rem; }
+  .booking-detail {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .booking-detail-icon {
+    width: 36px; height: 36px;
+    background: var(--beige-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .booking-detail-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem; font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .booking-detail-text strong {
+    display: block; font-weight: 400;
+    color: var(--text-dark); margin-bottom: 0.1rem;
+  }
+
+  /* CALENDAR */
+  .calendar-widget {
+    background: var(--beige-light);
+    border: 1px solid var(--beige-mid);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .cal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .cal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400; color: var(--text-dark);
+    letter-spacing: 0.05em;
+  }
+  .cal-nav-btn {
+    background: none; border: 1px solid var(--beige-mid);
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--text-mid); font-size: 0.85rem;
+    transition: all var(--transition-fast);
+  }
+  .cal-nav-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+  .cal-days-header {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; margin-bottom: 0.5rem;
+  }
+  .cal-days-header span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-light); padding: 0.25rem 0;
+  }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem; font-weight: 300;
+    cursor: pointer; transition: all var(--transition-fast);
+    color: var(--text-dark);
+    border: 1px solid transparent;
+  }
+  .cal-day:hover { background: var(--gold); color: var(--white); }
+  .cal-day.other-month { color: var(--beige-mid); cursor: default; }
+  .cal-day.other-month:hover { background: none; }
+  .cal-day.today { border-color: var(--gold); }
+  .cal-day.selected { background: var(--black); color: var(--white); }
+  .cal-day.unavailable { opacity: 0.3; cursor: not-allowed; }
+  .cal-day.unavailable:hover { background: none; }
+
+  /* TIME SLOTS */
+  .time-slots { margin-bottom: 2rem; }
+  .time-slots-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-light); margin-bottom: 0.75rem;
+  }
+  .slots-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .slot-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; font-weight: 300;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--beige-mid);
+    background: none; cursor: pointer;
+    transition: all var(--transition-fast); color: var(--text-dark);
+  }
+  .slot-btn:hover { border-color: var(--gold); }
+  .slot-btn.selected { background: var(--black); color: var(--white); border-color: var(--black); }
+  .slot-btn.full { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+
+  /* FORM */
+  .booking-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+  .form-group label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.875rem; font-weight: 300;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--beige-mid);
+    background: var(--white);
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color var(--transition-fast);
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-group select { appearance: none; cursor: pointer; }
+
+  /* STICKY MOBILE CTA */
+  .sticky-mobile-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 800;
+    background: var(--black);
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(184,151,106,0.3);
+  }
+  .sticky-mobile-cta .btn-primary { width: 100%; text-align: center; }
+
+  /* CONFIRMATION */
+  .booking-confirmation {
+    display: none;
+    text-align: center; padding: 4rem 2rem;
+    background: var(--beige-light);
+    border: 1px solid var(--beige-mid);
+    margin-top: 2rem;
+  }
+  .booking-confirmation .confirm-icon {
+    font-size: 3rem; display: block; margin-bottom: 1rem;
+  }
+  .booking-confirmation h3 { font-size: 2rem; margin-bottom: 1rem; }
+  .booking-confirmation p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; font-weight: 300;
+    color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem;
+  }
+
+  /* ─────────────────────────────────────
+     PAGE 5 – CONTACT
+  ───────────────────────────────────── */
+  .contact-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .contact-info {
+    background: var(--black);
+    padding: 6rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-info .section-label { color: var(--gold); }
+  .contact-info .section-label::before { background: var(--gold); }
+  .contact-info .section-title { color: var(--white); font-size: 2.5rem; }
+  .contact-details { margin: 2.5rem 0; display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-detail {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px;
+    background: rgba(184,151,106,0.15);
+    border: 1px solid rgba(184,151,106,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 0.9rem; flex-shrink: 0;
+  }
+  .contact-detail-info { flex: 1; }
+  .contact-detail-info strong {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(250,250,248,0.5); margin-bottom: 0.25rem; font-weight: 400;
+  }
+  .contact-detail-info span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 300; color: var(--white);
+  }
+  .contact-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    background: #25D366; color: var(--white);
+    padding: 0.75rem 1.5rem; text-decoration: none;
+    transition: all var(--transition-fast); border: none; cursor: pointer;
+  }
+  .btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); }
+  .btn-call {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    border: 1px solid rgba(184,151,106,0.4); color: var(--gold);
+    padding: 0.75rem 1.5rem; text-decoration: none;
+    transition: all var(--transition-fast); background: none; cursor: pointer;
+  }
+  .btn-call:hover { background: var(--gold); color: var(--black); }
+
+  .contact-form-area {
+    padding: 6rem 4rem;
+    background: var(--beige-light);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  /* MAP */
+  .map-container {
+    height: 400px; position: relative; overflow: hidden;
+    background: var(--beige-mid);
+  }
+  .map-container iframe { width: 100%; height: 100%; border: none; }
+  .map-overlay {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    background: var(--white);
+    padding: 1rem 1.25rem;
+    border-left: 2px solid var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .map-overlay h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 400; color: var(--text-dark);
+    margin-bottom: 0.25rem;
+  }
+  .map-overlay p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem; font-weight: 300; color: var(--text-light);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    padding: 5rem 3rem 2rem;
+    color: var(--white);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
+  }
+  .footer-brand .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem; font-weight: 300; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 1rem; display: block;
+  }
+  .footer-brand .logo span { color: var(--gold); }
+  .footer-brand p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(250,250,248,0.5); line-height: 1.8; max-width: 280px;
+  }
+  .footer-col h5 {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.25rem; font-weight: 400;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+  .footer-col ul li a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(250,250,248,0.55);
+    text-decoration: none; cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+  .footer-col ul li a:hover { color: var(--gold-light); }
+  .footer-col .footer-contact-item {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(250,250,248,0.55);
+    margin-bottom: 0.5rem; line-height: 1.6;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; font-weight: 300;
+    color: rgba(250,250,248,0.3);
+  }
+  .footer-social { display: flex; gap: 1rem; }
+  .footer-social a {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(250,250,248,0.5); font-size: 0.75rem;
+    text-decoration: none; transition: all var(--transition-fast);
+  }
+  .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── HOURS TABLE ─── */
+  .hours-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .hours-table td {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; font-weight: 300;
+    padding: 0.4rem 0;
+    color: rgba(250,250,248,0.6);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .hours-table td:first-child { color: rgba(250,250,248,0.8); }
+
+  /* ─── LOADING PAGE TRANSITION ─── */
+  .page-transition {
+    position: fixed; inset: 0; z-index: 5000;
+    background: var(--black);
+    transform: translateY(-100%);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+  }
+  .page-transition.enter { transform: translateY(0); }
+  .page-transition.exit { transform: translateY(100%); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.25rem 2rem; }
+    nav.scrolled { padding: 0.875rem 2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .about-section { grid-template-columns: 1fr; }
+    .about-image { height: 50vw; min-height: 300px; }
+    .about-content { padding: 4rem 3rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testi-grid { grid-template-columns: 1fr; max-width: 500px; }
+    .contact-section { grid-template-columns: 1fr; }
+    .contact-info { padding: 4rem 3rem; }
+    .contact-form-area { padding: 4rem 3rem; }
+    .booking-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .gallery-grid { columns: 2; }
+    .sticky-mobile-cta { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .intro-strip { gap: 2rem; padding: 2rem; }
+    .intro-divider { display: none; }
+    .services-preview { padding: 4rem 1.25rem; }
+    .services-grid { grid-template-columns: 1fr; gap: 0; }
+    .services-full { padding: 3rem 1.25rem; }
+    .services-cards { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .booking-section { padding: 3rem 1.25rem; padding-bottom: 6rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .gallery-section { padding: 3rem 1rem; }
+    .gallery-grid { columns: 1; }
+    .diff-card { min-width: 300px; max-width: 300px; }
+    .contact-info { padding: 3rem 1.5rem; }
+    .contact-form-area { padding: 3rem 1.5rem; }
+    .about-content { padding: 3rem 1.5rem; }
+    .cta-banner { padding: 4rem 1.5rem; }
+    .testimonials { padding: 4rem 1.5rem; }
+  }
+
+  @media (min-width: 1025px) {
+    .sticky-mobile-cta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE TRANSITION -->
+<div class="page-transition" id="pageTransition"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo" onclick="navigate('accueil')">Studio <span>É</span>légance</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="navigate('accueil');return false;" data-page="accueil">Accueil</a></li>
+    <li><a href="#" onclick="navigate('services');return false;" data-page="services">Services</a></li>
+    <li><a href="#" onclick="navigate('galerie');return false;" data-page="galerie">Galerie</a></li>
+    <li><a href="#" onclick="navigate('contact');return false;" data-page="contact">Contact</a></li>
+    <li><a href="#" onclick="navigate('reservation');return false;" class="nav-cta" data-page="reservation">Réserver</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="navigate('accueil');toggleMenu();return false;">Accueil</a>
+  <a href="#" onclick="navigate('services');toggleMenu();return false;">Services</a>
+  <a href="#" onclick="navigate('galerie');toggleMenu();return false;">Galerie</a>
+  <a href="#" onclick="navigate('contact');toggleMenu();return false;">Contact</a>
+  <a href="#" onclick="navigate('reservation');toggleMenu();return false;" class="m-cta">Réserver</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE ACCUEIL
+══════════════════════════════════════ -->
+<div class="page active" id="page-accueil">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Paris · Salon de Coiffure Haut de Gamme</p>
+      <h1 class="hero-title">L'art de la <em>beauté</em><br>à l'état pur</h1>
+      <p class="hero-subtitle">Votre transformation commence ici — au cœur de Paris</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="navigate('reservation')"><span>Réserver maintenant</span></button>
+        <button class="btn-outline" onclick="navigate('services')">Découvrir nos services</button>
+      </div>
+    </div>
+    <div class="hero-scroll" onclick="document.querySelector('.intro-strip').scrollIntoView({behavior:'smooth'})">
+      <div class="hero-scroll-line"></div>
+      <span>Découvrir</span>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="intro-strip reveal">
+    <div class="intro-stat">
+      <span class="intro-stat-num">14+</span>
+      <span class="intro-stat-label">Années d'expertise</span>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-stat">
+      <span class="intro-stat-num">2400</span>
+      <span class="intro-stat-label">Clients satisfaits</span>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-stat">
+      <span class="intro-stat-num">5★</span>
+      <span class="intro-stat-label">Note moyenne Google</span>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-stat">
+      <span class="intro-stat-num">12</span>
+      <span class="intro-stat-label">Artisans passionnés</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=900&q=80" alt="Studio Élégance intérieur" loading="lazy">
+      <div class="about-image-badge">
+        <strong>2010</strong>
+        <span>Fondé à Paris</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="reveal">
+        <span class="section-label">Notre philosophie</span>
+        <h2 class="section-title">Sublimer chaque<br>personnalité</h2>
+        <p>« La coiffure est un dialogue entre l'artiste et sa cliente. »</p>
+        <p class="about-body">Chez Studio Élégance, nous croyons que chaque coupe, chaque couleur doit révéler votre singularité. Nos stylistes conjuguent savoir-faire traditionnel et techniques contemporaines pour créer un résultat qui vous ressemble vraiment.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <button class="btn-dark" onclick="navigate('services')">Nos services</button>
+          <button class="btn-primary" onclick="navigate('reservation')"><span>Prendre RDV</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFÉRENCIATEURS -->
+  <section class="differentiators">
+    <div class="diff-header reveal">
+      <span class="section-label">Notre promesse</span>
+      <h2 class="section-title light">Ce qui nous différencie</h2>
+    </div>
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="diff-card active">
+          <span class="diff-card-icon">✦</span>
+          <h3>Expertise & Formation</h3>
+          <p>Nos stylistes se forment chaque année aux dernières tendances internationales — Londres, Milan, New York. L'excellence est notre standard minimal.</p>
+          <button class="card-cta" onclick="navigate('reservation')">Réserver une consultation →</button>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card-icon">◈</span>
+          <h3>Produits Haut de Gamme</h3>
+          <p>Nous travaillons exclusivement avec Kérastase, Oribe et Davines — des formules qui respectent et subliment votre fibre capillaire.</p>
+          <button class="card-cta" onclick="navigate('reservation')">Découvrir nos soins →</button>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card-icon">◇</span>
+          <h3>Consultation Personnalisée</h3>
+          <p>Chaque visite commence par un diagnostic capillaire approfondi. Votre coiffeur vous conseille selon votre morphologie, votre style de vie et vos envies.</p>
+          <button class="card-cta" onclick="navigate('reservation')">Réserver →</button>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card-icon">⬡</span>
+          <h3>Cadre Raffiné</h3>
+          <p>Notre salon est un espace de bien-être conçu pour vous ressourcer — lumière douce, musique sélectionnée, boissons premium offertes.</p>
+          <button class="card-cta" onclick="navigate('galerie')">Voir la galerie →</button>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card-icon">✧</span>
+          <h3>Suivi Post-Salon</h3>
+          <p>Nos stylistes vous partagent les rituels capillaires personnalisés pour prolonger la vie de votre coiffure bien après votre visite.</p>
+          <button class="card-cta" onclick="navigate('reservation')">Prendre RDV →</button>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="carouselPrev()">←</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" onclick="carouselNext()">→</button>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="services-preview">
+    <div class="services-preview-header reveal">
+      <div>
+        <span class="section-label">Nos créations</span>
+        <h2 class="section-title">Prestations d'exception</h2>
+      </div>
+      <button class="btn-dark" onclick="navigate('services')">Voir tout</button>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-preview-card" onclick="navigate('services')">
+        <span class="spc-icon">✂</span>
+        <h4>Coupe Femme</h4>
+        <p>Coupes sur-mesure adaptées à votre morphologie</p>
+        <span class="spc-price">À partir de 65 €</span>
+      </div>
+      <div class="service-preview-card" onclick="navigate('services')">
+        <span class="spc-icon">◉</span>
+        <h4>Coloration</h4>
+        <p>Balayage, mèches, couleur totale & techniques avancées</p>
+        <span class="spc-price">À partir de 85 €</span>
+      </div>
+      <div class="service-preview-card" onclick="navigate('services')">
+        <span class="spc-icon">◌</span>
+        <h4>Brushing & Coiffage</h4>
+        <p>Mise en forme professionnelle pour toutes occasions</p>
+        <span class="spc-price">À partir de 45 €</span>
+      </div>
+      <div class="service-preview-card" onclick="navigate('services')">
+        <span class="spc-icon">◈</span>
+        <h4>Soins Capillaires</h4>
+        <p>Rituels Kérastase & Oribe pour des cheveux sublimés</p>
+        <span class="spc-price">À partir de 35 €</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="reveal">
+      <span class="section-label">Ils nous font confiance</span>
+      <h2 class="section-title">L'avis de nos clients</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Une expérience absolument remarquable. Mon styliste a su parfaitement interpréter mes envies. Je ressors transformée à chaque visite. »</p>
+        <span class="testi-author">— Sophie M. · Cliente depuis 2019</span>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Le meilleur salon où j'ai mis les pieds à Paris. L'accueil, les produits, le résultat — tout est à la hauteur de leur réputation. »</p>
+        <span class="testi-author">— Inès L. · Cliente depuis 2021</span>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Ma coloration est un chef-d'œuvre. Personne ne croit que c'est artificiel. Je recommande Studio Élégance à toutes mes amies. »</p>
+        <span class="testi-author">— Clara B. · Cliente depuis 2020</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-bg"></div>
+    <div class="cta-banner-content reveal">
+      <span class="section-label" style="color:var(--gold-light);">Prenez soin de vous</span>
+      <h2>Votre moment d'exception<br>vous attend</h2>
+      <p>Réservez en quelques secondes — disponibilités en temps réel</p>
+      <button class="btn-primary" onclick="navigate('reservation')"><span>Réserver maintenant</span></button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Studio <span>É</span>légance</span>
+        <p>Salon de coiffure haut de gamme au cœur de Paris. L'excellence capillaire depuis 2010.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a onclick="navigate('accueil')">Accueil</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('galerie')">Galerie</a></li>
+          <li><a onclick="navigate('reservation')">Réservation</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Horaires</h5>
+        <table class="hours-table">
+          <tr><td>Lun – Mer</td><td>9h – 19h</td></tr>
+          <tr><td>Jeu – Ven</td><td>9h – 20h</td></tr>
+          <tr><td>Samedi</td><td>9h – 18h</td></tr>
+          <tr><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p class="footer-contact-item">42 Rue de Rivoli<br>75001 Paris</p>
+        <p class="footer-contact-item">+33 1 42 00 00 00</p>
+        <p class="footer-contact-item">bonjour@studio-elegance.fr</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Studio Élégance · Tous droits réservés · <a href="#" style="color:inherit;text-decoration:none;">Mentions légales</a></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE SERVICES
+══════════════════════════════════════ -->
+<div class="page" id="page-services">
+  <div style="height:80px;"></div>
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <h1>Nos Services</h1>
+      <p class="breadcrumb">Accueil · Services</p>
+    </div>
+  </section>
+
+  <div class="services-full">
+    <div class="services-category reveal">
+      <h2 class="services-category-title">Coupes & Coiffage</h2>
+      <div class="services-cards">
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" alt="Coupe Femme" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Femme</span>
+            <h3>Coupe Femme Signature</h3>
+            <p>Consultation + shampooing + coupe personnalisée selon morphologie et texture de cheveux.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 65 €</span>
+              <span class="sc-duration">⏱ 60–90 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Coupe Homme" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Homme</span>
+            <h3>Coupe Homme Premium</h3>
+            <p>Coupe précise + finitions rasoir + styling. Pour un look impeccable en toutes circonstances.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 45 €</span>
+              <span class="sc-duration">⏱ 45–60 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="Brushing" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Coiffage</span>
+            <h3>Brushing & Mise en Plis</h3>
+            <p>Lissage, boucles ou ondulations — votre mise en forme professionnelle pour toutes occasions.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 45 €</span>
+              <span class="sc-duration">⏱ 45 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Coiffure mariage" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Événement</span>
+            <h3>Coiffure Cérémonie</h3>
+            <p>Mariage, soirée gala ou événement spécial — un chignon, une tresse ou un updo d'exception.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 95 €</span>
+              <span class="sc-duration">⏱ 90 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-category reveal">
+      <h2 class="services-category-title">Colorations & Techniques</h2>
+      <div class="services-cards">
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Balayage" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Coloration</span>
+            <h3>Balayage & Highlights</h3>
+            <p>Balayage naturel, mèches soleil ou highlights contrastés — des reflets lumineux ultra-tendance.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 120 €</span>
+              <span class="sc-duration">⏱ 2h30–3h</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80" alt="Couleur totale" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Coloration</span>
+            <h3>Couleur Totale</h3>
+            <p>Coloration uniforme ou multi-tonalités pour un résultat intense, lumineux et durable.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 85 €</span>
+              <span class="sc-duration">⏱ 1h30–2h</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=600&q=80" alt="Ombre Hair" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Technique</span>
+            <h3>Ombre & Tie & Dye</h3>
+            <p>Une dégradation de couleur subtile ou contrastée pour un effet naturel époustouflant.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 130 €</span>
+              <span class="sc-duration">⏱ 2h–3h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-category reveal">
+      <h2 class="services-category-title">Soins & Traitements</h2>
+      <div class="services-cards">
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80" alt="Soin Kérastase" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Soin</span>
+            <h3>Rituel Kérastase</h3>
+            <p>Soin nourrissant intensif adapté à votre type de cheveux. Résultats visibles dès la première application.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 35 €</span>
+              <span class="sc-duration">⏱ 30–45 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80" alt="Lissage brésilien" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Traitement</span>
+            <h3>Lissage Brésilien</h3>
+            <p>Éliminez les frisottis et disciplinez vos cheveux pour des semaines. Formule sans formaldéhyde.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 180 €</span>
+              <span class="sc-duration">⏱ 3h–4h</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card" onclick="navigate('reservation')">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&q=80" alt="Massage crânien" loading="lazy">
+          <div class="service-card-content">
+            <span class="sc-tag">Bien-être</span>
+            <h3>Massage Crânien & Soin</h3>
+            <p>Un moment de pure détente alliant aromathérapie et massage du cuir chevelu revitalisant.</p>
+            <div class="service-card-footer">
+              <span class="sc-price">À partir de 45 €</span>
+              <span class="sc-duration">⏱ 45 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-cta-area reveal">
+      <p style="font-family:'Jost',sans-serif;color:var(--text-light);font-size:0.9rem;margin-bottom:1.5rem;">
+        Vous avez une demande particulière ? Nous créons des prestations sur-mesure.
+      </p>
+      <button class="btn-primary" onclick="navigate('reservation')"><span>Réserver une prestation</span></button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Studio <span>É</span>légance</span>
+        <p>Salon de coiffure haut de gamme au cœur de Paris. L'excellence capillaire depuis 2010.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a onclick="navigate('accueil')">Accueil</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('galerie')">Galerie</a></li>
+          <li><a onclick="navigate('reservation')">Réservation</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Horaires</h5>
+        <table class="hours-table">
+          <tr><td>Lun – Mer</td><td>9h – 19h</td></tr>
+          <tr><td>Jeu – Ven</td><td>9h – 20h</td></tr>
+          <tr><td>Samedi</td><td>9h – 18h</td></tr>
+          <tr><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p class="footer-contact-item">42 Rue de Rivoli<br>75001 Paris</p>
+        <p class="footer-contact-item">+33 1 42 00 00 00</p>
+        <p class="footer-contact-item">bonjour@studio-elegance.fr</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Studio Élégance · Tous droits réservés</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE GALERIE
+══════════════════════════════════════ -->
+<div class="page" id="page-galerie">
+  <div style="height:80px;"></div>
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <h1>Notre Galerie</h1>
+      <p class="breadcrumb">Accueil · Galerie</p>
+    </div>
+  </section>
+
+  <div class="gallery-section">
+    <div class="gallery-filter reveal">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">Tout</button>
+      <button class="filter-btn" onclick="filterGallery('coupe',this)">Coupes</button>
+      <button class="filter-btn" onclick="filterGallery('couleur',this)">Colorations</button>
+      <button class="filter-btn" onclick="filterGallery('soin',this)">Soins</button>
+      <button class="filter-btn" onclick="filterGallery('style',this)">Coiffage</button>
+    </div>
+
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <div class="gallery-item" data-cat="coupe" onclick="openLightbox('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Coupe femme" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Coupe Femme Signature</span></div>
+      </div>
+      <div class="gallery-item" data-cat="couleur" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Balayage" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Balayage Naturel</span></div>
+      </div>
+      <div class="gallery-item" data-cat="style" onclick="openLightbox('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="Brushing" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Brushing Lissé</span></div>
+      </div>
+      <div class="gallery-item" data-cat="coupe" onclick="openLightbox('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Coupe homme" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Coupe Homme Premium</span></div>
+      </div>
+      <div class="gallery-item" data-cat="couleur" onclick="openLightbox('https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80" alt="Couleur" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Couleur Cuivrée</span></div>
+      </div>
+      <div class="gallery-item" data-cat="soin" onclick="openLightbox('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80" alt="Soin" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Rituel Kérastase</span></div>
+      </div>
+      <div class="gallery-item" data-cat="style" onclick="openLightbox('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Chignon" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Chignon Cérémonie</span></div>
+      </div>
+      <div class="gallery-item" data-cat="couleur" onclick="openLightbox('https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=600&q=80" alt="Ombre" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Ombre & Tie-Dye</span></div>
+      </div>
+      <div class="gallery-item" data-cat="coupe" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80" alt="Atelier" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Atelier Studio</span></div>
+      </div>
+      <div class="gallery-item" data-cat="style" onclick="openLightbox('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" alt="Coiffage artistique" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Coiffage Artistique</span></div>
+      </div>
+      <div class="gallery-item" data-cat="soin" onclick="openLightbox('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80" alt="Lissage" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Lissage Brésilien</span></div>
+      </div>
+      <div class="gallery-item" data-cat="coupe" onclick="openLightbox('https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=90')">
+        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Résultat coupe" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-label">Transformation Complète</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-cta reveal">
+      <p style="font-family:'Jost',sans-serif;color:var(--text-light);margin-bottom:1.5rem;">
+        Inspiré(e) par nos réalisations ? Réservez votre consultation.
+      </p>
+      <button class="btn-primary" onclick="navigate('reservation')"><span>Réserver maintenant</span></button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Studio <span>É</span>légance</span>
+        <p>Salon de coiffure haut de gamme au cœur de Paris.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a onclick="navigate('accueil')">Accueil</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('galerie')">Galerie</a></li>
+          <li><a onclick="navigate('reservation')">Réservation</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Horaires</h5>
+        <table class="hours-table">
+          <tr><td>Lun – Mer</td><td>9h – 19h</td></tr>
+          <tr><td>Jeu – Ven</td><td>9h – 20h</td></tr>
+          <tr><td>Samedi</td><td>9h – 18h</td></tr>
+          <tr><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p class="footer-contact-item">42 Rue de Rivoli, 75001 Paris</p>
+        <p class="footer-contact-item">+33 1 42 00 00 00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Studio Élégance · Tous droits réservés</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">FB</a><a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE RÉSERVATION
+══════════════════════════════════════ -->
+<div class="page" id="page-reservation">
+  <div style="height:80px;"></div>
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <h1>Réservation</h1>
+      <p class="breadcrumb">Accueil · Réservation</p>
+    </div>
+  </section>
+
+  <div class="booking-section">
+    <div class="booking-grid">
+      <!-- LEFT: INFO -->
+      <div class="booking-info reveal">
+        <span class="section-label">Votre moment</span>
+        <h3>Planifiez votre visite</h3>
+        <p>Choisissez votre date, votre prestation et votre stylist(e) préféré(e). Confirmation immédiate par email et SMS.</p>
+        <div class="booking-details">
+          <div class="booking-detail">
+            <div class="booking-detail-icon">📍</div>
+            <div class="booking-detail-text">
+              <strong>Adresse</strong>
+              42 Rue de Rivoli, 75001 Paris<br>Métro Châtelet (lignes 1, 7, 11, 14)
+            </div>
+          </div>
+          <div class="booking-detail">
+            <div class="booking-detail-icon">📞</div>
+            <div class="booking-detail-text">
+              <strong>Téléphone</strong>
+              +33 1 42 00 00 00<br>Du lundi au samedi
+            </div>
+          </div>
+          <div class="booking-detail">
+            <div class="booking-detail-icon">🕐</div>
+            <div class="booking-detail-text">
+              <strong>Horaires</strong>
+              Lun–Mer 9h–19h · Jeu–Ven 9h–20h<br>Samedi 9h–18h
+            </div>
+          </div>
+          <div class="booking-detail">
+            <div class="booking-detail-icon">✦</div>
+            <div class="booking-detail-text">
+              <strong>Politique d'annulation</strong>
+              Annulation gratuite jusqu'à 24h avant votre RDV
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="reveal reveal-delay-1">
+        <div id="bookingFormContainer">
+          <!-- CALENDAR -->
+          <div class="calendar-widget">
+            <div class="cal-header">
+              <button class="cal-nav-btn" onclick="calPrev()">←</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button class="cal-nav-btn" onclick="calNext()">→</button>
+            </div>
+            <div class="cal-days-header">
+              <span>Lun</span><span>Mar</span><span>Mer</span>
+              <span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+          </div>
+
+          <!-- TIME SLOTS -->
+          <div class="time-slots">
+            <p class="time-slots-title">Créneaux disponibles</p>
+            <div class="slots-grid" id="slotsGrid"></div>
+          </div>
+
+          <!-- BOOKING FORM -->
+          <form class="booking-form" onsubmit="submitBooking(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" placeholder="Sophie" required>
+              </div>
+              <div class="form-group">
+                <label>Nom</label>
+                <input type="text" placeholder="Martin" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Téléphone</label>
+                <input type="tel" placeholder="+33 6 00 00 00 00" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="sophie@email.fr" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Prestation souhaitée</label>
+              <select required>
+                <option value="" disabled selected>Choisissez une prestation…</option>
+                <option>Coupe Femme Signature – 65€</option>
+                <option>Coupe Homme Premium – 45€</option>
+                <option>Brushing & Mise en Plis – 45€</option>
+                <option>Coiffure Cérémonie – 95€</option>
+                <option>Balayage & Highlights – 120€</option>
+                <option>Couleur Totale – 85€</option>
+                <option>Ombre & Tie & Dye – 130€</option>
+                <option>Rituel Kérastase – 35€</option>
+                <option>Lissage Brésilien – 180€</option>
+                <option>Massage Crânien & Soin – 45€</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Styliste préféré(e)</label>
+              <select>
+                <option value="">Pas de préférence</option>
+                <option>Marie — Coloriste experte</option>
+                <option>Lucas — Spécialiste coupes</option>
+                <option>Chloé — Experte cérémonies</option>
+                <option>Antoine — Maître balayagiste</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Commentaires (optionnel)</label>
+              <textarea placeholder="Partagez vos envies, inspirations ou contraintes…"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;"><span>Confirmer la réservation</span></button>
+          </form>
+        </div>
+
+        <!-- CONFIRMATION -->
+        <div class="booking-confirmation" id="bookingConfirmation">
+          <span class="confirm-icon">✦</span>
+          <h3>Réservation confirmée !</h3>
+          <p>Merci pour votre confiance. Vous recevrez sous peu un email et un SMS de confirmation avec tous les détails de votre rendez-vous.</p>
+          <p style="margin-bottom:2.5rem;">Nous avons hâte de vous accueillir au Studio Élégance.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <button class="btn-primary" onclick="navigate('accueil')"><span>Retour à l'accueil</span></button>
+            <button class="btn-dark" onclick="resetBooking()">Nouvelle réservation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-mobile-cta">
+    <button class="btn-primary" onclick="document.querySelector('.booking-form').scrollIntoView({behavior:'smooth'})"><span>Réserver maintenant</span></button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Studio <span>É</span>légance</span>
+        <p>Salon de coiffure haut de gamme au cœur de Paris.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a onclick="navigate('accueil')">Accueil</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('galerie')">Galerie</a></li>
+          <li><a onclick="navigate('reservation')">Réservation</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Horaires</h5>
+        <table class="hours-table">
+          <tr><td>Lun – Mer</td><td>9h – 19h</td></tr>
+          <tr><td>Jeu – Ven</td><td>9h – 20h</td></tr>
+          <tr><td>Samedi</td><td>9h – 18h</td></tr>
+          <tr><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p class="footer-contact-item">42 Rue de Rivoli, 75001 Paris</p>
+        <p class="footer-contact-item">+33 1 42 00 00 00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Studio Élégance · Tous droits réservés</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">FB</a><a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE CONTACT
+══════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div style="height:80px;"></div>
+  
+  <div class="contact-section">
+    <div class="contact-info reveal">
+      <span class="section-label">Nous trouver</span>
+      <h2 class="section-title">Venez nous<br>rendre visite</h2>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-info">
+            <strong>Adresse</strong>
+            <span>42 Rue de Rivoli, 75001 Paris</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-info">
+            <strong>Téléphone</strong>
+            <span>+33 1 42 00 00 00</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉</div>
+          <div class="contact-detail-info">
+            <strong>Email</strong>
+            <span>bonjour@studio-elegance.fr</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-info">
+            <strong>Horaires</strong>
+            <span>Lun–Mer 9h–19h · Jeu–Ven 9h–20h · Sam 9h–18h</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-actions">
+        <a href="https://wa.me/33142000000" class="btn-whatsapp">
+          <span>💬</span> WhatsApp
+        </a>
+        <a href="tel:+33142000000" class="btn-call">
+          <span>📞</span> Appeler
+        </a>
+        <button class="btn-primary" onclick="navigate('reservation')"><span>Réserver</span></button>
+      </div>
+    </div>
+
+    <div class="contact-form-area reveal reveal-delay-1">
+      <span class="section-label">Nous écrire</span>
+      <h2 class="section-title" style="font-size:2rem;">Un message ?</h2>
+      <p style="font-family:'Jost',sans-serif;font-size:0.875rem;font-weight:300;color:var(--text-mid);margin:0.75rem 0 2rem;line-height:1.8;">
+        Pour toute question, demande de devis ou information, n'hésitez pas à nous contacter. Nous répondons sous 24h.
+      </p>
+      <form class="contact-form" onsubmit="submitContact(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prénom</label>
+            <input type="text" placeholder="Sophie" required>
+          </div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" placeholder="Martin" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="sophie@email.fr" required>
+        </div>
+        <div class="form-group">
+          <label>Sujet</label>
+          <select>
+            <option>Question sur les services</option>
+            <option>Demande de devis</option>
+            <option>Partenariat</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Votre message…" style="min-height:130px;" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary"><span>Envoyer le message</span></button>
+      </form>
+      <div id="contactConfirm" style="display:none;background:var(--beige-light);border:1px solid var(--beige-mid);padding:2rem;margin-top:1.5rem;text-align:center;">
+        <span style="font-size:2rem;display:block;margin-bottom:0.75rem;">✦</span>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:0.5rem;">Message envoyé !</h4>
+        <p style="font-family:'Jost',sans-serif;font-size:0.85rem;color:var(--text-mid);">Nous vous répondrons dans les 24 heures.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9414316073984!2d2.3443979764465747!3d48.855621371330286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sRue%20de%20Rivoli%2C%2075001%20Paris!5e0!3m2!1sfr!2sfr!4v1700000000000"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Studio Élégance – 42 Rue de Rivoli, Paris">
+    </iframe>
+    <div class="map-overlay">
+      <h4>Studio Élégance</h4>
+      <p>42 Rue de Rivoli · 75001 Paris<br>Métro Châtelet</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Studio <span>É</span>légance</span>
+        <p>Salon de coiffure haut de gamme au cœur de Paris. L'excellence capillaire depuis 2010.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a onclick="navigate('accueil')">Accueil</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('galerie')">Galerie</a></li>
+          <li><a onclick="navigate('reservation')">Réservation</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Horaires</h5>
+        <table class="hours-table">
+          <tr><td>Lun – Mer</td><td>9h – 19h</td></tr>
+          <tr><td>Jeu – Ven</td><td>9h – 20h</td></tr>
+          <tr><td>Samedi</td><td>9h – 18h</td></tr>
+          <tr><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p class="footer-contact-item">42 Rue de Rivoli<br>75001 Paris</p>
+        <p class="footer-contact-item">+33 1 42 00 00 00</p>
+        <p class="footer-contact-item">bonjour@studio-elegance.fr</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Studio Élégance · Tous droits réservés</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+// ─── NAVIGATION ───
+let currentPage = 'accueil';
+
+function navigate(page) {
+  if (page === currentPage) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  // Hide current
+  document.getElementById('page-' + currentPage).classList.remove('active');
+  document.getElementById('page-' + page).classList.add('active');
+  currentPage = page;
+
+  // Update active nav link
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === page);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Trigger reveals
+  setTimeout(initReveal, 100);
+}
+
+// ─── MOBILE MENU ───
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+
+// ─── SCROLL NAV ───
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── REVEAL ON SCROLL ───
+function initReveal() {
+  const els = document.querySelectorAll('#page-' + currentPage + ' .reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => {
+    el.classList.remove('visible');
+    observer.observe(el);
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(initReveal, 300);
+});
+
+// ─── CAROUSEL ───
+let carouselIndex = 0;
+const cards = document.querySelectorAll('.diff-card');
+const dotsContainer = document.getElementById('carouselDots');
+
+// Build dots
+cards.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
+});
+
+function goToSlide(idx) {
+  carouselIndex = idx;
+  const track = document.getElementById('carouselTrack');
+  const cardWidth = cards[0].offsetWidth + 24; // gap
+  track.style.transform = `translateX(calc(-${idx * cardWidth}px))`;
+
+  cards.forEach((c, i) => c.classList.toggle('active', i === idx));
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+function carouselNext() { goToSlide((carouselIndex + 1) % cards.length); }
+function carouselPrev() { goToSlide((carouselIndex - 1 + cards.length) % cards.length); }
+
+// Touch/Swipe
+let touchStart = null;
+document.querySelector('.carousel-wrapper').addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive: true });
+document.querySelector('.carousel-wrapper').addEventListener('touchend', e => {
+  if (!touchStart) return;
+  const delta = touchStart - e.changedTouches[0].clientX;
+  if (Math.abs(delta) > 40) delta > 0 ? carouselNext() : carouselPrev();
+  touchStart = null;
+});
+
+// Auto-advance
+setInterval(carouselNext, 5000);
+
+// ─── CALENDAR ───
+let calYear, calMonth, selectedDate = null, selectedSlot = null;
+
+const TIME_SLOTS = ['9:00','10:00','11:00','14:00','15:00','16:00','17:00','18:00'];
+const FULL_SLOTS = ['10:00','16:00']; // simulate some full slots
+
+function initCalendar() {
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCalendar();
+  renderSlots();
+}
+
+function renderCalendar() {
+  const months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  document.getElementById('calTitle').textContent = months[calMonth] + ' ' + calYear;
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const offset = (firstDay === 0) ? 6 : firstDay - 1; // Monday-first
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const daysInPrev = new Date(calYear, calMonth, 0).getDate();
+  const today = new Date();
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  for (let i = 0; i < offset; i++) {
+    const d = document.createElement('button');
+    d.className = 'cal-day other-month';
+    d.textContent = daysInPrev - offset + 1 + i;
+    grid.appendChild(d);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const btn = document.createElement('button');
+    btn.className = 'cal-day';
+    btn.textContent = d;
+    const thisDate = new Date(calYear, calMonth, d);
+    const isSunday = thisDate.getDay() === 0;
+    const isPast = thisDate < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    if (isSunday || isPast) {
+      btn.classList.add('unavailable');
+    } else {
+      if (thisDate.toDateString() === today.toDateString()) btn.classList.add('today');
+      btn.onclick = () => selectDate(d, btn);
+      if (selectedDate && selectedDate.d === d && selectedDate.m === calMonth && selectedDate.y === calYear) {
+        btn.classList.add('selected');
+      }
+    }
+    grid.appendChild(btn);
+  }
+}
+
+function selectDate(d, btn) {
+  document.querySelectorAll('.cal-day').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedDate = { d, m: calMonth, y: calYear };
+  selectedSlot = null;
+  renderSlots();
+}
+
+function renderSlots() {
+  const grid = document.getElementById('slotsGrid');
+  grid.innerHTML = '';
+  TIME_SLOTS.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'slot-btn' + (FULL_SLOTS.includes(t) ? ' full' : '');
+    btn.textContent = t;
+    btn.disabled = FULL_SLOTS.includes(t);
+    btn.onclick = () => {
+      document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedSlot = t;
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function calPrev() {
+  calMonth--;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCalendar();
+}
+function calNext() {
+  calMonth++;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCalendar();
+}
+
+// ─── BOOKING SUBMIT ───
+function submitBooking(e) {
+  e.preventDefault();
+  document.getElementById('bookingFormContainer').style.display = 'none';
+  const confirm = document.getElementById('bookingConfirmation');
+  confirm.style.display = 'block';
+  confirm.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetBooking() {
+  document.getElementById('bookingFormContainer').style.display = 'block';
+  document.getElementById('bookingConfirmation').style.display = 'none';
+  document.getElementById('bookingFormContainer').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ─── CONTACT SUBMIT ───
+function submitContact(e) {
+  e.preventDefault();
+  e.target.style.display = 'none';
+  document.getElementById('contactConfirm').style.display = 'block';
+}
+
+// ─── GALLERY FILTER ───
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// ─── LIGHTBOX ───
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ─── INIT ───
+document.addEventListener('DOMContentLoaded', () => {
+  initCalendar();
+  // Mark accueil as active in nav
+  const accueilLink = document.querySelector('.nav-links a[data-page="accueil"]');
+  if (accueilLink) accueilLink.classList.add('active');
+});
+</script>
+</body>
+</html>
